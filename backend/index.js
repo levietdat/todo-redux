@@ -4,7 +4,7 @@ import cors from "cors";
 import todo from './routes/todo.js'
 import mongoose from "mongoose";
 
-const URL = "mongodb+srv://admin:l9EntVBPsAf79QLQ@cluster0.eivdlji.mongodb.net/?retryWrites=true&w=majority"
+const URL = "mongodb+srv://admin:12345@cluster0.eivdlji.mongodb.net/?retryWrites=true&w=majority"
 const app = express();
 mongoose.connect(URL,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(()=>{

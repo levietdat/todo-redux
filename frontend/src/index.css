@@ -40,3 +40,6 @@ code {
   cursor: pointer;
   border: none;
 }
+.hide {
+  display: none;
+}

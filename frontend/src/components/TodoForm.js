@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { TextField, Button, Container, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { TextField, Button, Container } from "@mui/material";
 import { addNewTodos } from "../redux/todosSlice";
-
 import { useDispatch } from "react-redux";
+import { style } from "../styles";
+
 const TodoForm = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
@@ -24,7 +25,6 @@ const TodoForm = () => {
   return (
     <Container style={{align:"center"}}>
       <TextField
-        style={{}}
         onChange={handleChangeValue}
         value={value}
         id="outlined-basic"
@@ -33,10 +33,7 @@ const TodoForm = () => {
       />
       
       <Button
-      style={{alignSelf:"center",
-      marginTop:"5px",
-      marginLeft:"5px",
-      }}
+      style={style.buttonAdd}
         onClick={handleAddTodo}
         size="large"
         variant="contained"

@@ -7,26 +7,25 @@ const todoSlice = createSlice({
         todos:[]
      },
      reducers: {
-        // addTodos: (state ,action) =>  {
-        //     const newTodo = {
-        //         id:Date.now(),
-        //         todo:action.payload.todo,
-        //         completed:false
-        //     }
-        //     state.todos.push(newTodo);
-        // }
+     
      },
      extraReducers: (builder) => {
         builder.addCase(fetchTodos.pending,(state,action)=> {
-            state.status = 'loading';
+            state.status = 'pending';
         })
         builder.addCase(fetchTodos.fulfilled,(state,action)=> {
             state.status = 'idle';
             state.todos=action.payload
         })
+        builder.addCase(addNewTodos.pending,(state,action)=> {
+            state.status = 'pending';
+        })
         builder.addCase(addNewTodos.fulfilled,(state,action)=> {
             state.status = 'loading';
             state.todos.push(action.payload)
+        })
+        builder.addCase(updateTodo.pending,(state,action)=> {
+            state.status = 'pending';
         })
         builder.addCase(updateTodo.fulfilled,  (state, action )=> {
             state.status = 'updated';
@@ -64,8 +63,6 @@ export const updateTodo = createAsyncThunk('updateTodo', async (payload)=> {
     })
     const data = await res.json()
    return data
-
-    // return data
 })
 export const deleteTodo = createAsyncThunk('deleteTodo', async (payload)=> {
     const res = await fetch(`http://localhost:3000/todo/${payload.id}`, {
@@ -78,12 +75,6 @@ export const deleteTodo = createAsyncThunk('deleteTodo', async (payload)=> {
     const data = await res.json()
    return data
 })
-
-
-
-
-
-
 
 export const { addTodo }  = todoSlice.actions;
 export default todoSlice.reducer;
